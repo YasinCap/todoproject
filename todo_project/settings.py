@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-!5ks17k_p$p&ohu1yhblfw@$ff^k%nrb#03m6+&5rtaiv9i-p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["todoproject.herokuapp.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -118,11 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "todo_app", "static"),
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
