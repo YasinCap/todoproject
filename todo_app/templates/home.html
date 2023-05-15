@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo Lijst</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <h1>Todo Lijst</h1>
+      </div>
+
+      <div id="form">
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" id="task-input" name="name" required />
+          <button type="submit" id="submit-button">Taak toevoegen</button>
+        </form>
+      </div>
+
+      <div id="tasks">
+        <ul>
+          {% for task in tasks %}
+          <li class="task">
+            {{ task.name }} {% if task.completed %}
+            <span class="completed">Voltooid</span>
+            {% else %}
+            <button
+              class="complete-button"
+              onclick="location.href='{% url 'complete_task' task.id %}'"
+            >
+              Voltooien
+            </button>
+            {% endif %}
+            <button
+              class="delete-button"
+              onclick="location.href='{% url 'delete_task' task.id %}'"
+            >
+              Verwijderen
+            </button>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
